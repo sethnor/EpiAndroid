@@ -12,20 +12,6 @@
     tools:context="eu.epitech.sami.epiandroid.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Connexion"
-        android:id="@+id/textView"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="27dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="50dp" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,7 +19,6 @@
         android:ems="10"
         android:id="@+id/editText"
         android:layout_marginTop="29dp"
-        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -50,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Connexion"
-        android:id="@+id/button"
+        android:id="@+id/button_id"
         android:layout_below="@+id/editText2"
         android:layout_alignLeft="@+id/editText2"
         android:layout_alignStart="@+id/editText2"
