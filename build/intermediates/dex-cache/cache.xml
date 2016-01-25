@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\Sami\Documents\GitHub\EpiAndroid\app\libs\android-async-http-1.4.9.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
+        <dex dex="C:\Users\Sami\Documents\GitHub\EpiAndroid\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.9_d4f2014b6281bf4a67c7e7af98f0dd3620b03c6d.jar" />
+    </item>
+
+</items>
