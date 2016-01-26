@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
+
+import org.json.JSONException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,8 +36,16 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final EditText textLogin = (EditText) findViewById(R.id.editText);
+                final EditText textPassword = (EditText) findViewById(R.id.editText2);
+                String login = textLogin.getText().toString();
+                String password = textLogin.getText().toString();
                 Intent index = new Intent(MainActivity.this, IndexActivity.class);
 
+                try {
+                    EpiRestClientUsage.connectAndReturnToken(login, password);
+                }
+                catch ( JSONException e) { }
                 startActivity(index);
             }
         });    }
