@@ -4,4 +4,12 @@
     <string name="title_activity_index">IndexActivity</string>
     <string name="notSet">not set</string>
     <string name="buttonReload">reload</string>
+    <string name="intra" translatable="false">Epitech Intra</string>
+    <string name="profil">Profil</string>
+    <string name="planning">Planning</string>
+    <string name="notes">Notes</string>
+    <string name="modules">Modules</string>
+    <string name="projets">Projets</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
