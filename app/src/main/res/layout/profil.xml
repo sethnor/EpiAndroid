@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/profil_progress"
+        style="@android:style/Widget.Holo.ProgressBar.Large"
+        android:indeterminate="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+
+    <Button
+        android:id="@+id/profil_reload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonReload"
+        android:textColor="@color/background_floating_material_light"
+        android:background="@color/epiBlue"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/profil_image"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:contentDescription="@string/notSet" />
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/profil_login_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/notSet" />
+
+
+                <TextView
+                    android:id="@+id/profil_current_credit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/notSet" />
+
+
+                <TextView
+                    android:id="@+id/profil_in_progress_credit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/notSet" />
+
+
+                <TextView
+                    android:id="@+id/profil_fail_credit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/notSet" />
+
+
+                <TextView
+                    android:id="@+id/profil_semester_num_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/notSet" />
+
+
+                <TextView
+                    android:id="@+id/profil_promo_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/notSet" />
+
+
+                <TextView
+                    android:id="@+id/profil_log_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/notSet" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <ListView
+            android:id="@+id/profil_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </LinearLayout>
+
+</RelativeLayout>
