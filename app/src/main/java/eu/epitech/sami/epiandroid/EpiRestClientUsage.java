@@ -4,13 +4,11 @@ package eu.epitech.sami.epiandroid;
  * Created by Sami on 25/01/2016.
  */
 
-import android.preference.PreferenceActivity;
-
 import org.json.*;
 import com.loopj.android.http.*;
 
 public class EpiRestClientUsage {
-    public void     connectAndReturnToken(String login, String password) throws JSONException {
+    public static void     connectAndReturnToken(String login, String password) throws JSONException {
         RequestParams params = new RequestParams();
 
         params.put("login", login);
@@ -18,13 +16,13 @@ public class EpiRestClientUsage {
         EpiRestClient.post("login", params, new JsonHttpResponseHandler());
     }
 
-     public void    getInfos(String token) throws JSONException {
+     public static void    getInfos(String token) throws JSONException {
          RequestParams params = new RequestParams("token", token);
 
          EpiRestClient.post("infos", params, new JsonHttpResponseHandler());
      }
 
-    public void     getPlanning(String token, String begin, String end) throws JSONException {
+    public static void     getPlanning(String token, String begin, String end) throws JSONException {
         RequestParams params = new RequestParams();
 
         params.put("token", token);
@@ -33,7 +31,7 @@ public class EpiRestClientUsage {
         EpiRestClient.get("planning", params, new JsonHttpResponseHandler());
     }
 
-    public void     getSusies(String token, String begin, String end) throws JSONException
+    public static void     getSusies(String token, String begin, String end) throws JSONException
     {
         RequestParams params = new RequestParams();
 
@@ -44,7 +42,7 @@ public class EpiRestClientUsage {
         EpiRestClient.get("susies", params, new JsonHttpResponseHandler());
     }
 
-    public void     getSpeicificSusie(String token, int id, int calendar_id) throws JSONException
+    public static void     getSpeicificSusie(String token, int id, int calendar_id) throws JSONException
     {
         RequestParams params = new RequestParams();
 
@@ -55,7 +53,7 @@ public class EpiRestClientUsage {
         EpiRestClient.get("susie", params, new JsonHttpResponseHandler());
     }
 
-    public void     subscribeToSusie(String token, int id, int calendar_id) throws JSONException
+    public static void     subscribeToSusie(String token, int id, int calendar_id) throws JSONException
     {
         RequestParams params = new RequestParams();
 
@@ -66,14 +64,14 @@ public class EpiRestClientUsage {
         EpiRestClient.post("susie", params, new JsonHttpResponseHandler());
     }
 
-    public void     getProjects(String token) throws JSONException
+    public static void     getProjects(String token) throws JSONException
     {
         RequestParams params = new RequestParams("token", token);
 
         EpiRestClient.get("projects", params, new JsonHttpResponseHandler());
     }
 
-    public void     getSpecificProject(String token, int scolaryear, String codemodule, String codeinstance, String codeacti) throws JSONException
+    public static void     getSpecificProject(String token, int scolaryear, String codemodule, String codeinstance, String codeacti) throws JSONException
     {
         RequestParams params = new RequestParams();
 
@@ -86,7 +84,7 @@ public class EpiRestClientUsage {
         EpiRestClient.get("project", params, new JsonHttpResponseHandler());
     }
 
-    public void     subscribeToProject(String token, int scolaryear, String codemodule, String codeinstance, String codeacti) throws JSONException
+    public static void     subscribeToProject(String token, int scolaryear, String codemodule, String codeinstance, String codeacti) throws JSONException
     {
         RequestParams params = new RequestParams();
 
@@ -99,14 +97,14 @@ public class EpiRestClientUsage {
         EpiRestClient.post("project", params, new JsonHttpResponseHandler());
     }
 
-    public void     getUserModule(String token) throws JSONException
+    public static void     getUserModule(String token) throws JSONException
     {
         RequestParams params = new RequestParams("token", token);
 
         EpiRestClient.get("modules", params, new JsonHttpResponseHandler());
     }
 
-    public void     getAllModules(String token, int scolaryear, String location, String course) throws JSONException
+    public static void     getAllModules(String token, int scolaryear, String location, String course) throws JSONException
     {
         RequestParams params = new RequestParams();
 
@@ -118,7 +116,7 @@ public class EpiRestClientUsage {
         EpiRestClient.get("allmodules", params, new JsonHttpResponseHandler());
     }
 
-    public void     getSpecificModule(String token, int scolaryear, String codemodule, String codeinstance) throws JSONException
+    public static void     getSpecificModule(String token, int scolaryear, String codemodule, String codeinstance) throws JSONException
     {
         RequestParams params = new RequestParams();
 
@@ -130,7 +128,7 @@ public class EpiRestClientUsage {
         EpiRestClient.get("module", params, new JsonHttpResponseHandler());
     }
 
-    public void     SubscribeToModule(String token, int scolaryear, String codemodule, String codeinstance) throws JSONException
+    public static void     SubscribeToModule(String token, int scolaryear, String codemodule, String codeinstance) throws JSONException
     {
         RequestParams params = new RequestParams();
 
