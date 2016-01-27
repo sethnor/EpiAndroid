@@ -16,6 +16,8 @@ import org.json.JSONException;
 
 public class MainActivity extends AppCompatActivity {
 
+    EpiRestClientUsage usage = new EpiRestClientUsage();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,16 +41,18 @@ public class MainActivity extends AppCompatActivity {
                 final EditText textLogin = (EditText) findViewById(R.id.editText);
                 final EditText textPassword = (EditText) findViewById(R.id.editText2);
                 String login = textLogin.getText().toString();
-                String password = textLogin.getText().toString();
-                Intent index = new Intent(MainActivity.this, IndexActivity.class);
+                String password = textPassword.getText().toString();
+//                Intent index = new Intent(MainActivity.this, IndexActivity.class);
 
                 try {
-                    EpiRestClientUsage.connectAndReturnToken(login, password);
+                    usage.connectAndReturnToken(login, password);
                 }
-                catch ( JSONException e) { }
-                startActivity(index);
+                catch ( JSONException e) { return ; }
+                System.out.println("connect and return token ok");
+  //              startActivity(index);
             }
-        });    }
+        });
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

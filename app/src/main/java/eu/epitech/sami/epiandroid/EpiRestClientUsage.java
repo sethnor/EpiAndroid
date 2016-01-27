@@ -8,12 +8,42 @@ import org.json.*;
 import com.loopj.android.http.*;
 
 public class EpiRestClientUsage {
-    public static void     connectAndReturnToken(String login, String password) throws JSONException {
+    public void     connectAndReturnToken(String login, String password) throws JSONException {
         RequestParams params = new RequestParams();
 
         params.put("login", login);
         params.put("password", password);
-        EpiRestClient.post("login", params, new JsonHttpResponseHandler());
+        EpiRestClient.post("login", params, new JsonHttpResponseHandler()
+        {
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
+            {
+                try {
+                    String token = response.getString("token");
+
+                    System.out.println(token);
+                }
+                catch (JSONException e) { }
+            }
+
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
+            {
+                try {
+                    JSONObject object = response.getJSONObject(0);
+                    String token = object.getString("token");
+
+                    System.out.println(token);
+                }
+                catch (JSONException e) { }
+            }
+
+            @Override
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, java.lang.Throwable throwable, JSONObject errorResponse)
+            {
+                System.out.println("failure");
+            }
+        });
     }
 
      public static void    getInfos(String token) throws JSONException {
