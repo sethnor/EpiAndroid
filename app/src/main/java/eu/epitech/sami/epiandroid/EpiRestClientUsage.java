@@ -13,29 +13,20 @@ public class EpiRestClientUsage {
 
         params.put("login", login);
         params.put("password", password);
-        EpiRestClient.getToken();
         EpiRestClient.post("login", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response) {
                 try {
                     String token = response.getString("token");
 
-                    EpiRestClient.TOKEN = token;
-                    System.out.println(token);
+                    EpiRestClient.model.token.setToken(token);
                 } catch (JSONException e) {
                 }
             }
 
             @Override
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
-                try {
-                    JSONObject object = response.getJSONObject(0);
-                    String token = object.getString("token");
 
-                    EpiRestClient.TOKEN = token;
-                    System.out.println(token);
-                } catch (JSONException e) {
-                }
             }
 
             @Override
@@ -43,7 +34,6 @@ public class EpiRestClientUsage {
                 System.out.println("failure");
             }
         });
-        EpiRestClient.getToken();
     }
 
      public void    getInfos(String token) throws JSONException {

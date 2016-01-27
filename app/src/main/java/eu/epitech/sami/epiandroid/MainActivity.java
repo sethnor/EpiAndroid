@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     usage.connectAndReturnToken(login, password);
                 }
                 catch ( JSONException e) { return ; }
-                System.out.println("connect and return token ok");
+                EpiRestClient.model.token.setLogin(login);
   //              startActivity(index);
             }
         });
