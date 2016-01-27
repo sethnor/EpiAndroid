@@ -178,4 +178,33 @@ public class EpiRestClientUsage {
 
         EpiRestClient.post("module", params, new JsonHttpResponseHandler());
     }
+
+    public void            getUserInfo(String token, String login) throws JSONException
+    {
+        RequestParams params = new RequestParams();
+
+        params.put("token", token);
+        params.put("login", login);
+
+        EpiRestClient.get("user", params, new JsonHttpResponseHandler()
+        {
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
+            {
+
+            }
+
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
+            {
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, java.lang.Throwable throwable, JSONObject errorResponse)
+            {
+
+            }
+        });
+    }
 }
