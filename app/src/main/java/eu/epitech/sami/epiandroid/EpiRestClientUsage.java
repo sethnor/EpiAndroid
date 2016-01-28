@@ -109,7 +109,20 @@ public class EpiRestClientUsage {
     {
         RequestParams params = new RequestParams("token", token);
 
-        EpiRestClient.get("projects", params, new JsonHttpResponseHandler());
+        EpiRestClient.get("projects", params, new JsonHttpResponseHandler()
+        {
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
+            {
+                //return jsonarray
+            }
+
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
+            {
+                EpiRestClient.model.projects.setArray(response);
+            }
+        });
     }
 
     public static void     getSpecificProject(String token, int scolaryear, String codemodule, String codeinstance, String codeacti) throws JSONException
@@ -167,7 +180,20 @@ public class EpiRestClientUsage {
         params.put("location", location);
         params.put("course", course);
 
-        EpiRestClient.get("allmodules", params, new JsonHttpResponseHandler());
+        EpiRestClient.get("allmodules", params, new JsonHttpResponseHandler()
+        {
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
+            {
+                EpiRestClient.model.allmodules.setObject(response);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
+            {
+                // return jsonbject
+            }
+        });
     }
 
     public static void     getSpecificModule(String token, int scolaryear, String codemodule, String codeinstance) throws JSONException

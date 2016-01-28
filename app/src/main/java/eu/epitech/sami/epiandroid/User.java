@@ -15,6 +15,9 @@ public class User {
     public static int        semester = 0;
     public static int        credits = 0;
     public static int        nsStat = 0;
+    public static int        year = 0;
+    public static String     location = "null";
+    public static String     course = "null";
     public static JSONObject object = new JSONObject();
 
     public static void          parseUser() {
@@ -29,6 +32,9 @@ public class User {
             semester = object.getInt("semester");
             credits = object.getInt("credits");
             nsStat = nsstat.getInt("active");
+            location = object.getString("location");
+            course = object.getString("course_code");
+            year = object.getInt("studentyear");
         } catch (JSONException e) {
             System.out.println("Failed parseUser");
         }

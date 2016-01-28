@@ -1,6 +1,8 @@
 package eu.epitech.sami.epiandroid;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +12,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+
 import eu.epitech.sami.epiandroid.Tasks.messagesTask;
-import eu.epitech.sami.epiandroid.Tasks.moduleUserTask;
 import eu.epitech.sami.epiandroid.Tasks.userTask;
 
 public class ProfilActivity extends AppCompatActivity {
@@ -53,6 +59,34 @@ public class ProfilActivity extends AppCompatActivity {
         ViewPromo.setText("Promo : " + EpiRestClient.model.user.promo);
         ViewNs.setText("Active log : " + EpiRestClient.model.user.nsStat);
 
+/*        System.out.println(EpiRestClient.model.user.picturePath);
+
+        try {
+            URL url = new URL(EpiRestClient.model.user.picturePath);
+            URLConnection connection = url.openConnection();
+            InputStream in = null;
+
+            if (!(connection instanceof HttpURLConnection))
+                throw new Exception("Not an http connection");
+            try {
+                HttpURLConnection httpconnection = (HttpURLConnection) connection;
+                httpconnection.setAllowUserInteraction(false);
+                httpconnection.setInstanceFollowRedirects(true);
+                httpconnection.setRequestMethod("GET");
+                httpconnection.connect();
+                int response = httpconnection.getResponseCode();
+                if (response == HttpURLConnection.HTTP_OK)
+                {
+                    in = httpconnection.getInputStream();
+                }
+            } catch (Exception e) { }
+
+            Bitmap bitmap = null;
+
+            bitmap = BitmapFactory.decodeStream(in);
+            in.close();
+            ViewPicture.setImageBitmap(bitmap);
+        } catch (Exception e) { System.out.println("Can't access picture"); }*/
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, EpiRestClient.model.messages.title);
         ViewMessages.setAdapter(adapter);
 
@@ -63,6 +97,16 @@ public class ProfilActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent grades = new Intent(ProfilActivity.this, GradesActivity.class);
                 startActivity(grades);
+            }
+        });
+
+        final Button buttonProjects = (Button) findViewById(R.id.button_projects);
+
+        buttonProjects.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent projects = new Intent(ProfilActivity.this, ProjectsActivity.class);
+                startActivity(projects);
             }
         });
     }

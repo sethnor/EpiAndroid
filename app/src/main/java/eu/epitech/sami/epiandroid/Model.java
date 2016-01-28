@@ -9,4 +9,6 @@ public class Model extends AbstractModel {
     public static Infos         infos = new Infos();
     public static Messages      messages = new Messages();
     public static userModule    usermodules = new userModule();
+    public static allModules    allmodules = new allModules();
+    public static Projects      projects = new Projects();
 }

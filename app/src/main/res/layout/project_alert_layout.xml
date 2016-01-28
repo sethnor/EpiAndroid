@@ -17,35 +17,42 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/module_title_text"
+            android:id="@+id/project_info_text"
             android:gravity="center"
             android:text="not set"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/module_scolaryear_text"
+            android:id="@+id/project_title_text"
             android:gravity="center"
             android:text="not set"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/module_codemodule_text"
+            android:id="@+id/project_codemodule_text"
             android:gravity="center"
             android:text="not set"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/module_grade_text"
+            android:id="@+id/project_registred_text"
             android:gravity="center"
             android:text="not set"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/module_credits_text"
+            android:id="@+id/project_scolaryear_text"
+            android:gravity="center"
+            android:text="not set"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/project_begin_text"
             android:gravity="center"
             android:text="not set"/>
 
