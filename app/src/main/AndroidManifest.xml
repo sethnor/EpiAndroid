@@ -24,7 +24,11 @@
             android:name=".IndexActivity"
             android:label="@string/title_activity_index"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ProfilActivity"></activity>
+        <activity android:name=".ProfilActivity" />
+        <activity
+            android:name=".GradesActivity"
+            android:label="@string/title_activity_grades"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -40,30 +40,26 @@ public class EpiRestClientUsage {
      public void    getInfos(String token) throws JSONException {
          RequestParams params = new RequestParams("token", token);
 
-         EpiRestClient.post("infos", params, new JsonHttpResponseHandler()
-         {
-            @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
-            {
-                EpiRestClient.model.infos.setObject(response);
-            }
+         EpiRestClient.post("infos", params, new JsonHttpResponseHandler() {
+             @Override
+             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response) {
+                 EpiRestClient.model.infos.setObject(response);
+             }
 
-            @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
-            {
-                try {
-                    JSONObject objectResponse = response.getJSONObject(0);
+             @Override
+             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
+                 try {
+                     JSONObject objectResponse = response.getJSONObject(0);
 
-                    EpiRestClient.model.infos.setObject(objectResponse);
-                } catch (JSONException e) {
-                }
-            }
+                     EpiRestClient.model.infos.setObject(objectResponse);
+                 } catch (JSONException e) {
+                 }
+             }
 
-            @Override
-            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, java.lang.Throwable throwable, JSONObject errorResponse)
-            {
-                System.out.println("Failure");
-            }
+             @Override
+             public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, java.lang.Throwable throwable, JSONObject errorResponse) {
+                 System.out.println("Failure");
+             }
          });
      }
 
@@ -146,7 +142,20 @@ public class EpiRestClientUsage {
     {
         RequestParams params = new RequestParams("token", token);
 
-        EpiRestClient.get("modules", params, new JsonHttpResponseHandler());
+        EpiRestClient.get("modules", params, new JsonHttpResponseHandler()
+        {
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
+            {
+                EpiRestClient.model.usermodules.setObject(response);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
+            {
+                //return jsonobject
+            }
+        });
     }
 
     public static void     getAllModules(String token, int scolaryear, String location, String course) throws JSONException
@@ -183,6 +192,27 @@ public class EpiRestClientUsage {
         params.put("codeinstance", codeinstance);
 
         EpiRestClient.post("module", params, new JsonHttpResponseHandler());
+    }
+
+    public void            getMessage(String token) throws JSONException
+    {
+        RequestParams      params = new RequestParams("token", token);
+
+        EpiRestClient.get("messages", params, new JsonHttpResponseHandler()
+        {
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
+            {
+                //return an array
+            }
+
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
+            {
+                System.out.println("Messages returns array");
+                EpiRestClient.model.messages.setArray(response);
+            }
+        });
     }
 
     public void            getUserInfo(String token, String login) throws JSONException

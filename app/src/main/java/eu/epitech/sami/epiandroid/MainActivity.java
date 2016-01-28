@@ -47,9 +47,11 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     t.join();
                 } catch (InterruptedException e) { System.out.println("failure thread"); }
-                EpiRestClient.model.token.login = login;
-                startActivity(profil);
+                if (!EpiRestClient.model.token.token.equals("0")) {
+                    EpiRestClient.model.token.login = login;
+                    startActivity(profil);
                 }
+            }
         });
     }
 

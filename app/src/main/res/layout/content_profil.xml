@@ -3,17 +3,17 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ProgressBar
+   <!-- <ProgressBar
         android:id="@+id/profil_progress"
         style="@android:style/Widget.Holo.ProgressBar.Large"
         android:indeterminate="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+        android:layout_centerVertical="true" />-->
 
 
-    <Button
+    <!--<Button
         android:id="@+id/profil_reload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         android:textColor="@color/background_floating_material_light"
         android:background="@color/epiBlue"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+        android:layout_centerVertical="true" />-->
 
 
     <LinearLayout
@@ -38,8 +38,8 @@
 
             <ImageView
                 android:id="@+id/profil_image"
-                android:layout_width="150dp"
-                android:layout_height="200dp"
+                android:layout_width="120dp"
+                android:layout_height="150dp"
                 android:contentDescription="@string/notSet" />
 
 
@@ -85,9 +85,15 @@
                     android:gravity="center"
                     android:text="@string/notSet" />
 
-
                 <TextView
                     android:id="@+id/profil_promo_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/notSet" />
+
+                <TextView
+                    android:id="@+id/profil_nsstat_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -95,11 +101,28 @@
             </LinearLayout>
         </LinearLayout>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:weightSum="1">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Modules"
+                android:id="@+id/button_grades"
+                android:layout_weight="0.06" />
+        </LinearLayout>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></RadioGroup>
 
         <ListView
             android:id="@+id/profil_list"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
+            android:layout_height="match_parent"/>
     </LinearLayout>
 
 </RelativeLayout>

@@ -14,10 +14,13 @@ public class User {
     public static int        promo = 0;
     public static int        semester = 0;
     public static int        credits = 0;
+    public static int        nsStat = 0;
     public static JSONObject object = new JSONObject();
 
     public static void          parseUser() {
         try {
+            JSONObject          nsstat = object.getJSONObject("nsstat");
+
             login = object.getString("login");
             fullName = object.getString("title");
             email = object.getString("internal_email");
@@ -25,6 +28,7 @@ public class User {
             promo = object.getInt("promo");
             semester = object.getInt("semester");
             credits = object.getInt("credits");
+            nsStat = nsstat.getInt("active");
         } catch (JSONException e) {
             System.out.println("Failed parseUser");
         }

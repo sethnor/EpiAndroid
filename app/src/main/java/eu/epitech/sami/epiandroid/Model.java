@@ -7,4 +7,6 @@ public class Model extends AbstractModel {
     public static Token         token = new Token();
     public static User          user = new User();
     public static Infos         infos = new Infos();
+    public static Messages      messages = new Messages();
+    public static userModule    usermodules = new userModule();
 }
