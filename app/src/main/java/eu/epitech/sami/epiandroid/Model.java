@@ -6,4 +6,5 @@ package eu.epitech.sami.epiandroid;
 public class Model extends AbstractModel {
     public static Token         token = new Token();
     public static User          user = new User();
+    public static Infos         infos = new Infos();
 }

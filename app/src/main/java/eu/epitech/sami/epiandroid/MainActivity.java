@@ -12,11 +12,9 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
-import org.json.JSONException;
+import eu.epitech.sami.epiandroid.Tasks.connectTask;
 
 public class MainActivity extends AppCompatActivity {
-
-    EpiRestClientUsage usage = new EpiRestClientUsage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +40,16 @@ public class MainActivity extends AppCompatActivity {
                 final EditText textPassword = (EditText) findViewById(R.id.editText2);
                 String login = textLogin.getText().toString();
                 String password = textPassword.getText().toString();
-//                Intent index = new Intent(MainActivity.this, IndexActivity.class);
+                Intent profil = new Intent(MainActivity.this, ProfilActivity.class);
 
+                Thread t = new Thread(new connectTask(login, password));
+                t.start();
                 try {
-                    usage.connectAndReturnToken(login, password);
+                    t.join();
+                } catch (InterruptedException e) { System.out.println("failure thread"); }
+                EpiRestClient.model.token.login = login;
+                startActivity(profil);
                 }
-                catch ( JSONException e) { return ; }
-                EpiRestClient.model.token.setLogin(login);
-  //              startActivity(index);
-            }
         });
     }
 

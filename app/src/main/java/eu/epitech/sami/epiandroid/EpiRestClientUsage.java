@@ -13,25 +13,26 @@ public class EpiRestClientUsage {
 
         params.put("login", login);
         params.put("password", password);
-        EpiRestClient.post("login", params, new JsonHttpResponseHandler() {
+        EpiRestClient.connect("login", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response) {
                 try {
                     String token = response.getString("token");
 
-                    EpiRestClient.model.token.setToken(token);
+                    EpiRestClient.model.token.token = token;
                 } catch (JSONException e) {
                 }
             }
 
             @Override
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
+                try {
+                    JSONObject objectResponse = response.getJSONObject(0);
+                    String token = objectResponse.getString("token");
 
-            }
-
-            @Override
-            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, java.lang.Throwable throwable, JSONObject errorResponse) {
-                System.out.println("failure");
+                    EpiRestClient.model.token.token = token;
+                } catch (JSONException e) {
+                }
             }
         });
     }
@@ -44,19 +45,24 @@ public class EpiRestClientUsage {
             @Override
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
             {
-
+                EpiRestClient.model.infos.setObject(response);
             }
 
             @Override
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
             {
+                try {
+                    JSONObject objectResponse = response.getJSONObject(0);
 
+                    EpiRestClient.model.infos.setObject(objectResponse);
+                } catch (JSONException e) {
+                }
             }
 
             @Override
             public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, java.lang.Throwable throwable, JSONObject errorResponse)
             {
-
+                System.out.println("Failure");
             }
          });
      }
@@ -184,26 +190,25 @@ public class EpiRestClientUsage {
         RequestParams params = new RequestParams();
 
         params.put("token", token);
-        params.put("login", login);
+        params.put("user", login);
 
         EpiRestClient.get("user", params, new JsonHttpResponseHandler()
         {
             @Override
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
             {
-
+                EpiRestClient.model.user.setObject(response);
             }
 
             @Override
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
             {
+                try {
+                    JSONObject objectResponse = response.getJSONObject(0);
 
-            }
-
-            @Override
-            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, java.lang.Throwable throwable, JSONObject errorResponse)
-            {
-
+                    EpiRestClient.model.user.setObject(objectResponse);
+                }
+                catch (JSONException e) { }
             }
         });
     }
