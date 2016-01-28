@@ -57,6 +57,19 @@
                     android:gravity="center"
                     android:text="@string/notSet" />
 
+                <TextView
+                    android:id="@+id/profil_full_name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/notSet" />
+
+                <TextView
+                    android:id="@+id/profil_email_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/notSet" />
 
                 <TextView
                     android:id="@+id/profil_current_credit_text"
@@ -64,23 +77,6 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/notSet" />
-
-
-                <TextView
-                    android:id="@+id/profil_in_progress_credit_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/notSet" />
-
-
-                <TextView
-                    android:id="@+id/profil_fail_credit_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/notSet" />
-
 
                 <TextView
                     android:id="@+id/profil_semester_num_text"
@@ -92,14 +88,6 @@
 
                 <TextView
                     android:id="@+id/profil_promo_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/notSet" />
-
-
-                <TextView
-                    android:id="@+id/profil_log_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"

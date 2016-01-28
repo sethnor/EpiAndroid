@@ -7,9 +7,27 @@ import org.json.JSONObject;
  * Created by tester on 27/01/2016.
  */
 public class User {
+    public static String     login = "null";
+    public static String     fullName = "null";
+    public static String     email = "null";
+    public static String     picturePath = "null";
+    public static int        promo = 0;
+    public static int        semester = 0;
+    public static int        credits = 0;
     public static JSONObject object = new JSONObject();
 
     public static void          parseUser() {
+        try {
+            login = object.getString("login");
+            fullName = object.getString("title");
+            email = object.getString("internal_email");
+            picturePath = object.getString("picture");
+            promo = object.getInt("promo");
+            semester = object.getInt("semester");
+            credits = object.getInt("credits");
+        } catch (JSONException e) {
+            System.out.println("Failed parseUser");
+        }
     }
 
     public static void         setObject(JSONObject newobject)
