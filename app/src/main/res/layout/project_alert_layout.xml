@@ -58,7 +58,22 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:id="@+id/button_projects_unsubscribe"
+                android:layout_weight="0.01" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:id="@+id/button_projects_subscribe"
+                android:layout_weight="0.01" />
+
         </LinearLayout>
 
     </LinearLayout>

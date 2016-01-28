@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import eu.epitech.sami.epiandroid.Tasks.allModulesTask;
 import eu.epitech.sami.epiandroid.Tasks.moduleUserTask;
+import eu.epitech.sami.epiandroid.Tasks.subscribeModuleTask;
 
 public class GradesActivity extends AppCompatActivity {
     public static boolean          userModule = true;
@@ -100,7 +101,7 @@ public class GradesActivity extends AppCompatActivity {
         });
     }
 
-    public void createModuleAlertDialog(int position)
+    public void createModuleAlertDialog(final int position)
     {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -111,8 +112,12 @@ public class GradesActivity extends AppCompatActivity {
         final TextView ViewTitle = (TextView) alertLayout.findViewById(R.id.module_title_text);
         final TextView ViewGrade = (TextView) alertLayout.findViewById(R.id.module_grade_text);
         final TextView ViewCredit = (TextView) alertLayout.findViewById(R.id.module_credits_text);
-        int scolaryear;
-        String codemodule;
+
+        final Button subscibeButton = (Button) alertLayout.findViewById(R.id.button_module_subscribe);
+        final Button unsubscribeButton = (Button) alertLayout.findViewById(R.id.button_module_unsubscribe);
+
+        final int scolaryear;
+        final String codemodule;
         String title;
         String grade;
         String credits;
@@ -141,7 +146,20 @@ public class GradesActivity extends AppCompatActivity {
             ViewTitle.setText("Titre du module : " + title);
             ViewGrade.setText("Statut : " + grade);
             ViewCredit.setText("Credits : " + credits);
+
+            subscibeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Thread t1 = new Thread(new subscribeModuleTask(EpiRestClient.model.token.token, scolaryear, codemodule, EpiRestClient.model.allmodules.codeinstance[position]));
+
+                    t1.start();
+                    try {
+                        t1.join();
+                    } catch (InterruptedException e) { }
+                }
+            });
         }
+
         alert.setView(alertLayout);
         alert.setCancelable(true);
         AlertDialog dialog = alert.create();

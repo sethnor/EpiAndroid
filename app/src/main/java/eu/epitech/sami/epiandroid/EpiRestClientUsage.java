@@ -217,7 +217,20 @@ public class EpiRestClientUsage {
         params.put("codemodule", codemodule);
         params.put("codeinstance", codeinstance);
 
-        EpiRestClient.post("module", params, new JsonHttpResponseHandler());
+        EpiRestClient.post("module", params, new JsonHttpResponseHandler()
+        {
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
+            {
+                //ne fait rien
+            }
+
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
+            {
+                //ne fait rien
+            }
+        });
     }
 
     public void            getMessage(String token) throws JSONException

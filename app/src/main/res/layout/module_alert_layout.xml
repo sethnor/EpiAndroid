@@ -49,9 +49,26 @@
             android:gravity="center"
             android:text="not set"/>
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:id="@+id/button_module_unsubscribe"
+                android:layout_weight="0.01" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:id="@+id/button_module_subscribe"
+                android:layout_weight="0.01" />
+
         </LinearLayout>
 
     </LinearLayout>

@@ -13,6 +13,7 @@ public class allModules {
     public static String[]    title;
     public static String[]    credits;
     public static String[]    status;
+    public static String[]    codeinstance;
     public static JSONObject  object = new JSONObject();
 
     public static void        parseAllModules()
@@ -24,6 +25,7 @@ public class allModules {
             title = new String[items.length()];
             credits = new String[items.length()];
             status = new String[items.length()];
+            codeinstance = new String[items.length()];
 
             for (int i = 0; i < items.length(); i++)
             {
@@ -34,6 +36,7 @@ public class allModules {
                 title[i] = module.getString("title");
                 credits[i] = module.getString("credits");
                 status[i] = module.getString("status");
+                codeinstance[i] = module.getString("codeinstance");
             }
         } catch (JSONException e) { System.out.println("parseAllModules failed"); }
     }
