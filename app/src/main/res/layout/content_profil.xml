@@ -36,11 +36,10 @@
             android:layout_height="wrap_content">
 
 
-            <ImageView
+            <com.loopj.android.image.SmartImageView
                 android:id="@+id/profil_image"
                 android:layout_width="120dp"
-                android:layout_height="150dp"
-                android:contentDescription="@string/notSet" />
+                android:layout_height="150dp"/>
 
 
             <LinearLayout

@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.loopj.android.image.SmartImageView;
+
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -34,7 +36,7 @@ public class ProfilActivity extends AppCompatActivity {
         final TextView ViewSemester = (TextView) findViewById(R.id.profil_semester_num_text);
         final TextView ViewPromo = (TextView) findViewById(R.id.profil_promo_text);
         final TextView ViewNs = (TextView) findViewById(R.id.profil_nsstat_text);
-        final ImageView ViewPicture = (ImageView) findViewById(R.id.profil_image);
+        final SmartImageView ViewPicture = (SmartImageView) findViewById(R.id.profil_image);
         final ListView ViewMessages =(ListView) findViewById(R.id.profil_list);
 
         Thread t = new Thread(new userTask(EpiRestClient.model.token.token, EpiRestClient.model.token.login));
@@ -58,35 +60,8 @@ public class ProfilActivity extends AppCompatActivity {
         ViewSemester.setText("Current semester : " + EpiRestClient.model.user.semester);
         ViewPromo.setText("Promo : " + EpiRestClient.model.user.promo);
         ViewNs.setText("Active log : " + EpiRestClient.model.user.nsStat);
+        ViewPicture.setImageUrl(EpiRestClient.model.user.picturePath);
 
-/*        System.out.println(EpiRestClient.model.user.picturePath);
-
-        try {
-            URL url = new URL(EpiRestClient.model.user.picturePath);
-            URLConnection connection = url.openConnection();
-            InputStream in = null;
-
-            if (!(connection instanceof HttpURLConnection))
-                throw new Exception("Not an http connection");
-            try {
-                HttpURLConnection httpconnection = (HttpURLConnection) connection;
-                httpconnection.setAllowUserInteraction(false);
-                httpconnection.setInstanceFollowRedirects(true);
-                httpconnection.setRequestMethod("GET");
-                httpconnection.connect();
-                int response = httpconnection.getResponseCode();
-                if (response == HttpURLConnection.HTTP_OK)
-                {
-                    in = httpconnection.getInputStream();
-                }
-            } catch (Exception e) { }
-
-            Bitmap bitmap = null;
-
-            bitmap = BitmapFactory.decodeStream(in);
-            in.close();
-            ViewPicture.setImageBitmap(bitmap);
-        } catch (Exception e) { System.out.println("Can't access picture"); }*/
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, EpiRestClient.model.messages.title);
         ViewMessages.setAdapter(adapter);
 

@@ -1,5 +1,7 @@
 package eu.epitech.sami.epiandroid;
 
+import android.text.Html;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,6 +29,7 @@ public class Messages {
                 JSONObject expeditorObject = object.getJSONObject("user");
 
                 title[i] = object.getString("title");
+                title[i] = Html.fromHtml(title[i]).toString();
                 expeditorName[i] = expeditorObject.getString("title");
                 content[i] = object.getString("content");
                 date[i] = object.getString("date");

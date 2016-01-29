@@ -2,9 +2,7 @@ package eu.epitech.sami.epiandroid;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -28,15 +26,6 @@ public class GradesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_grades);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         final Button userModuleButton = (Button) findViewById(R.id.button_user_module);
         final Button allModulesButton = (Button) findViewById(R.id.button_all_modules);
@@ -133,6 +122,9 @@ public class GradesActivity extends AppCompatActivity {
             ViewTitle.setText("Titre du module : " + title);
             ViewGrade.setText("Grade : " + grade);
             ViewCredit.setText("Credits : " + credits);
+
+            subscibeButton.setBackgroundColor(Color.GRAY);
+            unsubscribeButton.setBackgroundColor(Color.RED);
         }
         else
         {
@@ -147,6 +139,15 @@ public class GradesActivity extends AppCompatActivity {
             ViewGrade.setText("Statut : " + grade);
             ViewCredit.setText("Credits : " + credits);
 
+            if (grade.equals("ongoing") || grade.equals("valid") || grade.equals("fail")) {
+                subscibeButton.setBackgroundColor(Color.GRAY);
+                unsubscribeButton.setBackgroundColor(Color.GRAY);
+            }
+            else if (grade.equals("notregistered"))
+            {
+                subscibeButton.setBackgroundColor(Color.GREEN);
+                unsubscribeButton.setBackgroundColor(Color.GRAY);
+            }
             subscibeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -155,7 +156,8 @@ public class GradesActivity extends AppCompatActivity {
                     t1.start();
                     try {
                         t1.join();
-                    } catch (InterruptedException e) { }
+                    } catch (InterruptedException e) {
+                    }
                 }
             });
         }
