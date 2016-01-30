@@ -63,13 +63,25 @@ public class EpiRestClientUsage {
          });
      }
 
-    public static void     getPlanning(String token, String begin, String end) throws JSONException {
+    public void     getPlanning(String token, String begin, String end) throws JSONException {
         RequestParams params = new RequestParams();
 
         params.put("token", token);
         params.put("start", begin);
         params.put("end", end);
-        EpiRestClient.get("planning", params, new JsonHttpResponseHandler());
+        EpiRestClient.get("planning", params, new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
+            {
+                //returns a jsonarray
+            }
+
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
+            {
+                EpiRestClient.model.planning.setObjects(response);
+            }
+        });
     }
 
     public static void     getSusies(String token, String begin, String end) throws JSONException
@@ -109,17 +121,14 @@ public class EpiRestClientUsage {
     {
         RequestParams params = new RequestParams("token", token);
 
-        EpiRestClient.get("projects", params, new JsonHttpResponseHandler()
-        {
+        EpiRestClient.get("projects", params, new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
-            {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response) {
                 //return jsonarray
             }
 
             @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
-            {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
                 EpiRestClient.model.projects.setArray(response);
             }
         });
@@ -155,17 +164,14 @@ public class EpiRestClientUsage {
     {
         RequestParams params = new RequestParams("token", token);
 
-        EpiRestClient.get("modules", params, new JsonHttpResponseHandler()
-        {
+        EpiRestClient.get("modules", params, new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
-            {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response) {
                 EpiRestClient.model.usermodules.setObject(response);
             }
 
             @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
-            {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
                 //return jsonobject
             }
         });
@@ -217,17 +223,14 @@ public class EpiRestClientUsage {
         params.put("codemodule", codemodule);
         params.put("codeinstance", codeinstance);
 
-        EpiRestClient.post("module", params, new JsonHttpResponseHandler()
-        {
+        EpiRestClient.post("module", params, new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
-            {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response) {
                 //ne fait rien
             }
 
             @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
-            {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
                 //ne fait rien
             }
         });
@@ -237,17 +240,14 @@ public class EpiRestClientUsage {
     {
         RequestParams      params = new RequestParams("token", token);
 
-        EpiRestClient.get("messages", params, new JsonHttpResponseHandler()
-        {
+        EpiRestClient.get("messages", params, new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
-            {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response) {
                 //return an array
             }
 
             @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
-            {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
                 System.out.println("Messages returns array");
                 EpiRestClient.model.messages.setArray(response);
             }
@@ -278,6 +278,35 @@ public class EpiRestClientUsage {
                     EpiRestClient.model.user.setObject(objectResponse);
                 }
                 catch (JSONException e) { }
+            }
+        });
+    }
+
+    public void         validateToken(String token, int scolaryear, String codemodule, String codeinstance, String codeacti, String codeevent, String tokenvalidationcode) throws JSONException
+    {
+        RequestParams   params = new RequestParams();
+
+        params.put("token", token);
+        params.put("scolaryear", scolaryear);
+        params.put("codemodule", codemodule);
+        params.put("codeinstance", codeinstance);
+        params.put("codeacti", codeacti);
+        params.put("codeeevent", codeevent);
+        params.put("tokenvalidationcode", tokenvalidationcode);
+
+        EpiRestClient.post("token", params, new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
+            {
+                //returns nothing
+                System.out.println("Token validated");
+            }
+
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
+            {
+                //returns nothing
+                System.out.println("Token validated");
             }
         });
     }
