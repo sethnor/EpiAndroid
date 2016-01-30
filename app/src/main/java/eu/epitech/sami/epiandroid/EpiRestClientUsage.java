@@ -308,6 +308,11 @@ public class EpiRestClientUsage {
                 //returns nothing
                 System.out.println("Token validated");
             }
+
+            @Override
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, java.lang.Throwable throwable, JSONObject errorResponse) {
+                System.out.println("Token validation failure");
+            }
         });
     }
 }

@@ -31,7 +31,6 @@ public class Planning {
             nbhours = new String[objects.length()];
             starthours = new String[objects.length()];
             endhours = new String[objects.length()];
-
             for (int i = 0; i < objects.length(); i++)
             {
                 JSONObject event = objects.getJSONObject(i);
