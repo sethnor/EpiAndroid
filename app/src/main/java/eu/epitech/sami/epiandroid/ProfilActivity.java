@@ -80,7 +80,7 @@ public class ProfilActivity extends AppCompatActivity {
         buttonProjects.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent projects = new Intent(ProfilActivity.this, ProjectsActivity.class);
+                Intent projects = new Intent(ProfilActivity.this, PlanningActivity.class);
                 startActivity(projects);
             }
         });
