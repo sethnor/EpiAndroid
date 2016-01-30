@@ -8,7 +8,7 @@ import org.json.JSONObject;
  * Created by tester on 30/01/2016.
  */
 public class Planning {
-    public static String[]     scolaryear;
+    public static String[]  scolaryear;
     public static String[]  codeacti;
     public static String[]  codeinstance;
     public static String[]  codeevent;
@@ -16,6 +16,7 @@ public class Planning {
     public static String[]  actititle;
     public static String[]  nbhours;
     public static String[]  starthours;
+    public static String[]  endhours;
     public static JSONArray objects = new JSONArray();
 
     public static void      parsePlanning()
@@ -29,6 +30,7 @@ public class Planning {
             actititle = new String[objects.length()];
             nbhours = new String[objects.length()];
             starthours = new String[objects.length()];
+            endhours = new String[objects.length()];
 
             for (int i = 0; i < objects.length(); i++)
             {
@@ -41,6 +43,7 @@ public class Planning {
                 actititle[i] = event.getString("acti_title");
                 nbhours[i] = event.getString("nb_hours");
                 starthours[i] = event.getString("start");
+                endhours[i] = event.getString("end");
             }
         } catch (JSONException e) { }
     }
