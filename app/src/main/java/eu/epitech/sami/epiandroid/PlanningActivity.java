@@ -25,6 +25,9 @@ import eu.epitech.sami.epiandroid.Tasks.validateTokenTask;
 
 public class PlanningActivity extends AppCompatActivity {
     public static String    todayDate;
+    public static TextView txt;
+    private SimpleDateFormat df;
+    private       Calendar  c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +36,57 @@ public class PlanningActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        String date = df.format(c.getTime());
+        c = Calendar.getInstance();
+        df = new SimpleDateFormat("yyyy-MM-dd");
+        todayDate = df.format(c.getTime());
 
-        final TextView txt = (TextView) findViewById(R.id.textView);
+        txt = (TextView) findViewById(R.id.textView);
 
-        System.out.println(date);
-        txt.setText(date);
+        txt.setText(todayDate);
 
-        Thread t1 = new Thread(new planningTask(EpiRestClient.model.token.token, date, date));
+        final Button prev = (Button) findViewById(R.id.buttonPrev);
+        final Button next = (Button) findViewById(R.id.buttonNext);
+
+        prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                c.add(Calendar.DATE, -1);
+                df = new SimpleDateFormat("yyyy-MM-dd");
+                todayDate = df.format(c.getTime());
+
+                txt = (TextView) findViewById(R.id.textView);
+
+                txt.setText(todayDate);
+
+                Thread t1 = new Thread(new planningTask(EpiRestClient.model.token.token, todayDate, todayDate));
+                t1.start();
+                try {
+                    t1.join();
+                } catch (InterruptedException e) { return ; }
+                setData();
+            }
+        });
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                c.add(Calendar.DATE, 1);
+                df = new SimpleDateFormat("yyyy-MM-dd");
+                todayDate = df.format(c.getTime());
+                txt = (TextView) findViewById(R.id.textView);
+
+                txt.setText(todayDate);
+
+                Thread t1 = new Thread(new planningTask(EpiRestClient.model.token.token, todayDate, todayDate));
+                t1.start();
+                try {
+                    t1.join();
+                } catch (InterruptedException e) { return ; }
+                setData();
+            }
+        });
+
+        Thread t1 = new Thread(new planningTask(EpiRestClient.model.token.token, todayDate, todayDate));
         t1.start();
         try {
             t1.join();
