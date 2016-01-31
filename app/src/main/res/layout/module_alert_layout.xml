@@ -18,36 +18,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/module_title_text"
-            android:gravity="center"
-            android:text="not set"/>
+            android:gravity="center" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/module_scolaryear_text"
-            android:gravity="center"
-            android:text="not set"/>
+            android:gravity="center" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/module_codemodule_text"
-            android:gravity="center"
-            android:text="not set"/>
+            android:gravity="center" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/module_grade_text"
-            android:gravity="center"
-            android:text="not set"/>
+            android:gravity="center" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/module_credits_text"
-            android:gravity="center"
-            android:text="not set"/>
+            android:gravity="center" />
 
 
 
@@ -58,14 +53,14 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-"
+                android:text="@string/unsub"
                 android:id="@+id/button_module_unsubscribe"
                 android:layout_weight="0.01" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+"
+                android:text="@string/sub"
                 android:id="@+id/button_module_subscribe"
                 android:layout_weight="0.01" />
 

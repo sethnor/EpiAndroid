@@ -6,10 +6,21 @@
     <string name="buttonReload">reload</string>
     <string name="intra" translatable="false">Epitech Intra</string>
     <string name="profil">Profil</string>
+    <string name="connection">Connexion</string>
     <string name="planning">Planning</string>
     <string name="notes">Notes</string>
     <string name="modules">Modules</string>
     <string name="projets">Projets</string>
+    <string name="sub">+</string>
+    <string name="unsub">-</string>
+    <string name="token">Token</string>
+    <string name="valider">Valider</string>
+    <string name="userProject">Vos projets</string>
+    <string name="allProjects">Tous les projets</string>
+    <string name="userModules">Vos modules</string>
+    <string name="allModules">Tous les modules</string>
+    <string name="nextDay">\></string>
+    <string name="prevDay">&lt;</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_planning">PlanningActivity</string>

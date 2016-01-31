@@ -22,14 +22,14 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="74dp"
-                android:text="Vos projets"
+                android:text="@string/userProject"
                 android:id="@+id/button_user_projects"
                 android:layout_weight="0.62" />
 
             <Button
                 android:layout_width="136dp"
                 android:layout_height="74dp"
-                android:text="Tous les projets"
+                android:text="@string/allProjects"
                 android:id="@+id/button_all_projects"
                 android:layout_weight="0.35" />
 

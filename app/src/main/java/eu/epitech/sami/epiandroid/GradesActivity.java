@@ -122,9 +122,6 @@ public class GradesActivity extends AppCompatActivity {
             ViewTitle.setText("Titre du module : " + title);
             ViewGrade.setText("Grade : " + grade);
             ViewCredit.setText("Credits : " + credits);
-
-            subscibeButton.setBackgroundColor(Color.GRAY);
-            unsubscribeButton.setBackgroundColor(Color.RED);
         }
         else
         {
@@ -139,15 +136,6 @@ public class GradesActivity extends AppCompatActivity {
             ViewGrade.setText("Statut : " + grade);
             ViewCredit.setText("Credits : " + credits);
 
-            if (grade.equals("ongoing") || grade.equals("valid") || grade.equals("fail")) {
-                subscibeButton.setBackgroundColor(Color.GRAY);
-                unsubscribeButton.setBackgroundColor(Color.GRAY);
-            }
-            else if (grade.equals("notregistered"))
-            {
-                subscibeButton.setBackgroundColor(Color.GREEN);
-                unsubscribeButton.setBackgroundColor(Color.GRAY);
-            }
             subscibeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

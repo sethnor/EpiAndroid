@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import eu.epitech.sami.epiandroid.Tasks.projectsUserTask;
+import eu.epitech.sami.epiandroid.Tasks.subscribeProjectTask;
 
 public class ProjectsActivity extends AppCompatActivity {
     public static boolean       userProjects = true;
@@ -78,7 +79,7 @@ public class ProjectsActivity extends AppCompatActivity {
         });
     }
 
-    public void createModuleAlertDialog(int position)
+    public void createModuleAlertDialog(final int position)
     {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -92,9 +93,9 @@ public class ProjectsActivity extends AppCompatActivity {
         final TextView ViewBegin = (TextView) alertLayout.findViewById(R.id.project_begin_text);
         String info;
         String title;
-        String codemodule;
+        final String codemodule;
         String registred;
-        String scolaryear;
+        final String scolaryear;
         String begin;
 
         if (userProjects) {
@@ -125,6 +126,22 @@ public class ProjectsActivity extends AppCompatActivity {
             ViewRegistred.setText("Inscrit : " + registred);
             ViewScolaryear.setText("Année : " + scolaryear);
             ViewBegin.setText("Début : " + begin);
+
+            final Button subscribeButton = (Button) alertLayout.findViewById(R.id.button_projects_subscribe);
+
+            subscribeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Thread t1 = new Thread(new subscribeProjectTask(EpiRestClient.model.token.token, Integer.parseInt(scolaryear), codemodule, EpiRestClient.model.projects.codeinstance_all[position],
+                            EpiRestClient.model.projects.codeacti_all[position]));
+
+                    t1.start();
+                    try {
+                        t1.join();
+                    } catch (InterruptedException e) {
+                    }
+                }
+            });
         }
         alert.setView(alertLayout);
         alert.setCancelable(true);

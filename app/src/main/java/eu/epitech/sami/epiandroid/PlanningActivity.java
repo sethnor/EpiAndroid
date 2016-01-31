@@ -20,6 +20,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import eu.epitech.sami.epiandroid.Tasks.planningTask;
+import eu.epitech.sami.epiandroid.Tasks.subscribeEventTask;
 import eu.epitech.sami.epiandroid.Tasks.validateTokenTask;
 
 public class PlanningActivity extends AppCompatActivity {
@@ -76,7 +77,7 @@ public class PlanningActivity extends AppCompatActivity {
         final TextView ViewEnd = (TextView) alertLayout.findViewById(R.id.event_end_text);
         final TextView ViewDuration = (TextView) alertLayout.findViewById(R.id.event_duration_text);
 
-//        final Button subscibeButton = (Button) alertLayout.findViewById(R.id.button_event_subscribe);
+        final Button subscribeButton = (Button) alertLayout.findViewById(R.id.button_event_subscribe);
         final Button validateToken = (Button) alertLayout.findViewById(R.id.button_validate_token);
 //        final Button unsubscribeButton = (Button) alertLayout.findViewById(R.id.button_event_unsubscribe);
 
@@ -98,6 +99,19 @@ public class PlanningActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createTokenAlertDialog(position);
+            }
+        });
+
+        subscribeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Thread t1 = new Thread(new subscribeEventTask(EpiRestClient.model.token.token, Integer.parseInt(EpiRestClient.model.planning.scolaryear[position]), EpiRestClient.model.planning.codemodule[position],
+                        EpiRestClient.model.planning.codeinstance[position], EpiRestClient.model.planning.codeacti[position], EpiRestClient.model.planning.codeevent[position]));
+
+                t1.start();
+                try {
+                    t1.join();
+                } catch (InterruptedException e) { }
             }
         });
 

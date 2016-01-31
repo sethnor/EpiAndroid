@@ -69,55 +69,44 @@ public class EpiRestClientUsage {
         params.put("token", token);
         params.put("start", begin);
         params.put("end", end);
-        EpiRestClient.get("planning", params, new JsonHttpResponseHandler(){
+        EpiRestClient.get("planning", params, new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
-            {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response) {
                 //returns a jsonarray
             }
 
             @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
-            {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
                 EpiRestClient.model.planning.setObjects(response);
             }
         });
     }
 
-    public static void     getSusies(String token, String begin, String end) throws JSONException
+    public void     subscribeToEvent(String token, int scolaryear, String codemodule, String codeinstance, String codeacti, String codeevent) throws JSONException
     {
         RequestParams params = new RequestParams();
 
         params.put("token", token);
-        params.put("start", begin);
-        params.put("end", end);
+        params.put("scolaryear", scolaryear);
+        params.put("codemodule", codemodule);
+        params.put("codeinstance", codeinstance);
+        params.put("codeacti", codeacti);
+        params.put("codeevent", codeevent);
+        EpiRestClient.post("event", params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response) {
+                //return nothing
+                System.out.println("Register to event ok");
+            }
 
-        EpiRestClient.get("susies", params, new JsonHttpResponseHandler());
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response) {
+                //return nothing
+            }
+        });
     }
 
-    public static void     getSpeicificSusie(String token, int id, int calendar_id) throws JSONException
-    {
-        RequestParams params = new RequestParams();
-
-        params.put("token", token);
-        params.put("id", id);
-        params.put("calendar_id", calendar_id);
-
-        EpiRestClient.get("susie", params, new JsonHttpResponseHandler());
-    }
-
-    public static void     subscribeToSusie(String token, int id, int calendar_id) throws JSONException
-    {
-        RequestParams params = new RequestParams();
-
-        params.put("token", token);
-        params.put("id", id);
-        params.put("calendar_id", calendar_id);
-
-        EpiRestClient.post("susie", params, new JsonHttpResponseHandler());
-    }
-
-    public static void     getProjects(String token) throws JSONException
+    public void     getProjects(String token) throws JSONException
     {
         RequestParams params = new RequestParams("token", token);
 
@@ -147,7 +136,7 @@ public class EpiRestClientUsage {
         EpiRestClient.get("project", params, new JsonHttpResponseHandler());
     }
 
-    public static void     subscribeToProject(String token, int scolaryear, String codemodule, String codeinstance, String codeacti) throws JSONException
+    public void     subscribeToProject(String token, int scolaryear, String codemodule, String codeinstance, String codeacti) throws JSONException
     {
         RequestParams params = new RequestParams();
 
@@ -157,7 +146,19 @@ public class EpiRestClientUsage {
         params.put("codeinstance", codeinstance);
         params.put("codeacti", codeacti);
 
-        EpiRestClient.post("project", params, new JsonHttpResponseHandler());
+        EpiRestClient.post("project", params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject response)
+            {
+                System.out.println("Register to project successed");
+            }
+
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONArray response)
+            {
+
+            }
+        });
     }
 
     public static void     getUserModule(String token) throws JSONException
